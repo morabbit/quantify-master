@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>mainWindow</class>
+ <widget class="QMainWindow" name="mainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>409</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>量化分析</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QWidget" name="widget" native="true"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuStrategyCenter">
+    <property name="title">
+     <string>策略中心</string>
+    </property>
+    <widget class="QMenu" name="menuNewStrategy">
+     <property name="title">
+      <string>新建策略</string>
+     </property>
+     <addaction name="actionEditStrategy"/>
+     <addaction name="actionPieceStrategy"/>
+    </widget>
+    <addaction name="actionStrategyMgr"/>
+    <addaction name="menuNewStrategy"/>
+   </widget>
+   <widget class="QMenu" name="menuTestStimulate">
+    <property name="title">
+     <string>回测模拟</string>
+    </property>
+    <addaction name="actionStockStimulate"/>
+    <addaction name="actionFuturesStimulate"/>
+   </widget>
+   <widget class="QMenu" name="menuRealTrade">
+    <property name="title">
+     <string>实盘交易</string>
+    </property>
+    <addaction name="actionRealTrading"/>
+   </widget>
+   <widget class="QMenu" name="menuDateCenter">
+    <property name="title">
+     <string>数据中心</string>
+    </property>
+    <widget class="QMenu" name="menuStockData">
+     <property name="title">
+      <string>股票数据</string>
+     </property>
+     <addaction name="actionTransactionData"/>
+     <addaction name="actionInvestRefData"/>
+     <addaction name="actionStockClassificationData"/>
+     <addaction name="actionBasicData"/>
+     <addaction name="actionMacroEconomicData"/>
+     <addaction name="actionNewEventData"/>
+     <addaction name="actionDragonTigerData"/>
+     <addaction name="actionShanghaiInterbankOfferedRate"/>
+    </widget>
+    <addaction name="menuStockData"/>
+    <addaction name="actionfuturesDate"/>
+    <addaction name="actionSetMySQL"/>
+    <addaction name="actionSetMongoDB"/>
+   </widget>
+   <widget class="QMenu" name="menuResearchReport">
+    <property name="title">
+     <string>行研报告</string>
+    </property>
+    <addaction name="actionResearchReporting"/>
+   </widget>
+   <widget class="QMenu" name="menuGetHelp">
+    <property name="title">
+     <string>获取帮助</string>
+    </property>
+    <addaction name="actionGuideCenter"/>
+    <addaction name="actionAboutSelf"/>
+   </widget>
+   <widget class="QMenu" name="menuAssetsManager">
+    <property name="title">
+     <string>资产管理</string>
+    </property>
+    <addaction name="actionAssetsManager"/>
+   </widget>
+   <addaction name="menuStrategyCenter"/>
+   <addaction name="menuDateCenter"/>
+   <addaction name="menuTestStimulate"/>
+   <addaction name="menuRealTrade"/>
+   <addaction name="menuAssetsManager"/>
+   <addaction name="menuResearchReport"/>
+   <addaction name="menuGetHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionStockStimulate">
+   <property name="text">
+    <string>股票模拟</string>
+   </property>
+  </action>
+  <action name="actionFuturesStimulate">
+   <property name="text">
+    <string>期货模拟</string>
+   </property>
+  </action>
+  <action name="actionFactorInvestment">
+   <property name="text">
+    <string>因子投资</string>
+   </property>
+  </action>
+  <action name="actionGuideCenter">
+   <property name="text">
+    <string>使用向导</string>
+   </property>
+  </action>
+  <action name="actionResearchReporting">
+   <property name="text">
+    <string>行研报告</string>
+   </property>
+  </action>
+  <action name="actionAboutSelf">
+   <property name="text">
+    <string>关于我们</string>
+   </property>
+  </action>
+  <action name="actionAssetsManager">
+   <property name="text">
+    <string>资金账户管理</string>
+   </property>
+  </action>
+  <action name="actionRealTrading">
+   <property name="text">
+    <string>实盘交易</string>
+   </property>
+  </action>
+  <action name="actionStrategyMgr">
+   <property name="text">
+    <string>策略管理</string>
+   </property>
+  </action>
+  <action name="actionfuturesDate">
+   <property name="text">
+    <string>期货数据</string>
+   </property>
+  </action>
+  <action name="actionEditStrategy">
+   <property name="text">
+    <string>编写策略</string>
+   </property>
+  </action>
+  <action name="actionPieceStrategy">
+   <property name="text">
+    <string>快速新建</string>
+   </property>
+  </action>
+  <action name="actionTransactionData">
+   <property name="text">
+    <string>交易数据</string>
+   </property>
+  </action>
+  <action name="actionInvestRefData">
+   <property name="text">
+    <string>投资参考数据</string>
+   </property>
+  </action>
+  <action name="actionStockClassificationData">
+   <property name="text">
+    <string>股票分类数据</string>
+   </property>
+  </action>
+  <action name="actionBasicData">
+   <property name="text">
+    <string>基本面数据</string>
+   </property>
+  </action>
+  <action name="actionMacroEconomicData">
+   <property name="text">
+    <string>宏观经济数据</string>
+   </property>
+  </action>
+  <action name="actionNewEventData">
+   <property name="text">
+    <string>新闻事件数据</string>
+   </property>
+  </action>
+  <action name="actionDragonTigerData">
+   <property name="text">
+    <string>龙虎榜数据</string>
+   </property>
+  </action>
+  <action name="actionShanghaiInterbankOfferedRate">
+   <property name="text">
+    <string>银行间同业拆放利率</string>
+   </property>
+  </action>
+  <action name="actionSetMySQL">
+   <property name="text">
+    <string>配置MySQL</string>
+   </property>
+  </action>
+  <action name="actionSetMongoDB">
+   <property name="text">
+    <string>配置MongoDB</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
