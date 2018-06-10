@@ -6,6 +6,7 @@ import sys
 from PyQt4 import QtCore, QtGui
 from UiModule.common.commonWidget.calendarWidget.calendar import Calendar
 from futuresDataWidget_ui import Ui_futureDataWidget
+from data_basic import DataBasic
 
 
 class FutureDataWidget(QtGui.QWidget, Ui_futureDataWidget):
@@ -90,10 +91,14 @@ class FutureDataWidget(QtGui.QWidget, Ui_futureDataWidget):
         # 获取用户想要保存的数据路径
         path = unicode(QtGui.QFileDialog.getExistingDirectory(self, u"数据保存路径", QtCore.QDir.currentPath()).toUtf8(), 'utf-8', 'ignore')
         self.__refDict["path"] = path
+        DataBasic.set_save_path(path)
 
         # 调取数据模块的接口
         if self.btnSaveToCSV == self.sender():
-            pass # todo
+            print (self.__refDict)
+            for market in self.__refDict["market"]:
+                DataBasic.get_futures(self.__refDict["startTime"], self.__refDict["endTime"], market)
+
         elif self.btnSaveToExcel == self.sender():
             pass # todo
         elif self.btnSaveToHDF5 == self.sender():

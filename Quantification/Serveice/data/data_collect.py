@@ -57,5 +57,5 @@ if __name__ == "__main__":
     # print DataCollect.grep_hist_data("600848")
     save_path = os.path.join(BASIC_STOCK_PATH) + os.path.join('600848') + os.path.join('.csv')
 
-    print save_path
+    print (save_path)
 
