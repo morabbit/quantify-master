@@ -2,8 +2,9 @@
 
 import os
 import sys
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 
 # import qrc_resources
 
@@ -99,7 +100,7 @@ class PythonHighlighter(QSyntaxHighlighter):
         self.setFormat(0, textLength,
                        PythonHighlighter.Formats["normal"])
 
-        if text.startsWith("Traceback") or text.startsWith("Error: "):
+        if text.startswith("Traceback") or text.startswith("Error: "):
             self.setCurrentBlockState(ERROR)
             self.setFormat(0, textLength,
                            PythonHighlighter.Formats["error"])

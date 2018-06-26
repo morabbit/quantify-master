@@ -2,17 +2,18 @@
 
 import sys
 
-from PyQt4 import QtCore, QtGui
-from webPage import WebPage
-from quickNewStrategyWidget_ui import Ui_quickNewStrategyWidget
+from PyQt5 import QtCore, QtGui, QtWidgets
+# from PyQt5.QtWebKitWidgets import *
+from PyQt5.QtWebEngineWidgets import *
+from UiModule.strategyCenterWidgetGroup.quickNewStrategyWidget.quickNewStrategyWidget_ui import Ui_quickNewStrategyWidget
 
 
-class QuickNewStrategyWidget(QtGui.QWidget, Ui_quickNewStrategyWidget):
+class QuickNewStrategyWidget(QtWidgets.QWidget, Ui_quickNewStrategyWidget):
     def __init__(self, parent=None):
-        QtGui.QWidget.__init__(self, parent)
+        QtWidgets.QWidget.__init__(self, parent)
         self.setupUi(self)
 
-        self.webView.setPage(WebPage())
+        self.webView = QWebEngineView()
 
         # 初始化的url地址
         url = QtCore.QUrl("http://www.morabbit.com")
@@ -41,7 +42,7 @@ class QuickNewStrategyWidget(QtGui.QWidget, Ui_quickNewStrategyWidget):
 
 # 测试代码
 if __name__ == '__main__':
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
 
     window = QuickNewStrategyWidget()
     window.show()

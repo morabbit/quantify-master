@@ -2,15 +2,15 @@
 
 import sys
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 from UiModule.common.commonWidget.calendarWidget.calendar import Calendar
-from strategyMgrWidget_ui import Ui_strategyMgrWidget
+from UiModule.strategyCenterWidgetGroup.strategyMgrWidget.strategyMgrWidget_ui import Ui_strategyMgrWidget
 
 
-class StrategyMgrWidget(QtGui.QWidget, Ui_strategyMgrWidget):
+class StrategyMgrWidget(QtWidgets.QWidget, Ui_strategyMgrWidget):
     def __init__(self, parent=None):
-        QtGui.QWidget.__init__(self, parent)
+        QtWidgets.QWidget.__init__(self, parent)
         self.setupUi(self)
 
         # 创建日历窗口，但是不显示
@@ -39,7 +39,7 @@ class StrategyMgrWidget(QtGui.QWidget, Ui_strategyMgrWidget):
 
 # 测试代码
 if __name__ == '__main__':
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
 
     window = StrategyMgrWidget()
     window.show()

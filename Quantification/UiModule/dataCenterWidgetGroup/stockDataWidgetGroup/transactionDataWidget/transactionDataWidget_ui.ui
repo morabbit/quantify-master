@@ -1,0 +1,969 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>transactionDataWidget</class>
+ <widget class="QWidget" name="transactionDataWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>692</width>
+    <height>431</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>股票数据</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tabHistoricalQuotation">
+      <attribute name="title">
+       <string>历史行情</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <widget class="QLabel" name="labDataSource">
+         <property name="text">
+          <string>数据源：</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0">
+          <widget class="QCheckBox" name="chkBoxSH">
+           <property name="text">
+            <string>上证指数</string>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">buttonGroup</string>
+           </attribute>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QCheckBox" name="chkBoxSZ">
+           <property name="text">
+            <string>深圳成指</string>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">buttonGroup</string>
+           </attribute>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QCheckBox" name="chkBoxHS300">
+           <property name="text">
+            <string>沪深300</string>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">buttonGroup</string>
+           </attribute>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QCheckBox" name="chkBoxSZ50">
+           <property name="text">
+            <string>上证50</string>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">buttonGroup</string>
+           </attribute>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QCheckBox" name="chkBoxZXB">
+           <property name="text">
+            <string>中小板</string>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">buttonGroup</string>
+           </attribute>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QCheckBox" name="chkBoxCYB">
+           <property name="text">
+            <string>创业板</string>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">buttonGroup</string>
+           </attribute>
+          </widget>
+         </item>
+         <item row="1" column="2" colspan="2">
+          <widget class="QCheckBox" name="chkBoxStockCode">
+           <property name="text">
+            <string>股票代码</string>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">buttonGroup</string>
+           </attribute>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="labStockCodeForHistoricalQuotation">
+         <property name="text">
+          <string>股票代码：</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLineEdit" name="lineEditStockCodeForHistoricalQuotation"/>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="chkBoxBulkModeForHistoricalQuotation">
+           <property name="text">
+            <string>批量模式</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnBulkModeForHistoricalQuotation">
+           <property name="text">
+            <string>批量数据导入</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="labStartTimeForHistoricalQuotation">
+         <property name="text">
+          <string>开始时间：</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="LineEdit" name="lineEditStartTimeForHistoricalQuotation"/>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="labEndTimeForHistoricalQuotation">
+         <property name="text">
+          <string>结束时间：</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="LineEdit" name="lineEditEndTimeForHistoricalQuotation"/>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="labDataType">
+         <property name="text">
+          <string>数据类型：</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QComboBox" name="comboBoxDataType">
+         <item>
+          <property name="text">
+           <string>日K线</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>每周</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>每月</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5分钟</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>15分钟</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>30分钟</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>60分钟</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="labSavePathForHistoricalQuotation">
+         <property name="text">
+          <string>保存路径：</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_9">
+         <item>
+          <widget class="LineEdit" name="lineEditSavePathForHistoricalQuotation"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnSavePathForHistoricalQuotation">
+           <property name="text">
+            <string>选择路径</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="6" column="0" colspan="2">
+        <widget class="QWidget" name="widgetHistoricalQuotation" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabRehabilitationData">
+      <attribute name="title">
+       <string>复权数据</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="0">
+          <widget class="QLabel" name="labStockCodeForRehabilitationData">
+           <property name="text">
+            <string>股票代码：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QLineEdit" name="lineEditStockCodeForRehabilitationData"/>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="chkBoxBulkModeForRehabilitationData">
+             <property name="text">
+              <string>批量模式</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnBulkModeForRehabilitationData">
+             <property name="text">
+              <string>批量数据导入</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="labStartTimeForRehabilitationData">
+           <property name="text">
+            <string>开始时间：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="LineEdit" name="lineEditStartTimeForRehabilitationData"/>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="labEndTimeForRehabilitationData">
+           <property name="text">
+            <string>结束时间：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="LineEdit" name="lineEditEndTimeForRehabilitationData"/>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="labRehabilitationType">
+           <property name="text">
+            <string>复权类型：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QComboBox" name="comboBoxRehabilitationType">
+           <item>
+            <property name="text">
+             <string>前复权</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>后复权</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>不复权</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QCheckBox" name="chkBoxYes">
+             <property name="text">
+              <string>是</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">buttonGroup_2</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="chkBoxNo">
+             <property name="text">
+              <string>否</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">buttonGroup_2</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="labIsMarketIndex">
+           <property name="text">
+            <string>是否为大盘指数：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="labSavePathForRehabilitationData">
+           <property name="text">
+            <string>保存路径：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <layout class="QHBoxLayout" name="horizontalLayout_10">
+           <item>
+            <widget class="QLineEdit" name="lineEditSavePathForRehabilitationData"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnSavePathForRehabilitationData">
+             <property name="text">
+              <string>选择路径</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QWidget" name="widgetRehabilitationData" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabRealTimeQuotes">
+      <attribute name="title">
+       <string>实时行情</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_17">
+         <item>
+          <widget class="QLabel" name="labSavePathForRealTimeQuotation">
+           <property name="text">
+            <string>保存路径：</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEditSavePathForRealTimeQuotation"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnSavePathForRealTimeQuotation">
+           <property name="text">
+            <string>选择路径</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QWidget" name="widgetRealTimeQuotes" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabHistoricalTick">
+      <attribute name="title">
+       <string>历史分笔</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <layout class="QGridLayout" name="gridLayout_4">
+         <item row="0" column="0">
+          <widget class="QLabel" name="labStockCodeForHistoricalTick">
+           <property name="text">
+            <string>股票代码：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <widget class="QLineEdit" name="lineEditStockCodeForHistoricalTick"/>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="chkBoxBulkModeForHistoricalTick">
+             <property name="text">
+              <string>批量模式</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnBulkModeForHistoricalTick">
+             <property name="text">
+              <string>批量数据导入</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="labTickTimeForHistoricalTick">
+           <property name="text">
+            <string>分笔日期：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="LineEdit" name="lineEditTickTimeForHistoricalTick"/>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="labSavePathForHistoricalTick">
+           <property name="text">
+            <string>保存路径：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <layout class="QHBoxLayout" name="horizontalLayout_14">
+           <item>
+            <widget class="QLineEdit" name="lineEditSavePathForHistoricalTick"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnSavePathForHistoricalTick">
+             <property name="text">
+              <string>选择路径</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QWidget" name="widgetHistoricalTick" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabRealTimeTick">
+      <attribute name="title">
+       <string>实时分笔</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
+        <layout class="QGridLayout" name="gridLayout_6">
+         <item row="0" column="0">
+          <widget class="QLabel" name="labDataSourceForRealTimeTick">
+           <property name="text">
+            <string>数据源：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <layout class="QGridLayout" name="gridLayout_5">
+           <item row="0" column="0">
+            <widget class="QCheckBox" name="chkBoxSHForRealTimeTick">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>上证指数</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">buttonGroup_2</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QCheckBox" name="chkBoxSZForRealTimeTick">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>深圳成指</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">buttonGroup_2</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QCheckBox" name="chkBoxHS300ForRealTimeTick">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>沪深300</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">buttonGroup_2</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="0" column="3">
+            <widget class="QCheckBox" name="chkBoxSZ50ForRealTimeTick">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>上证50</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">buttonGroup_2</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QCheckBox" name="chkBoxZXBForRealTimeTick">
+             <property name="text">
+              <string>中小板</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">buttonGroup_2</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QCheckBox" name="chkBoxCYBForRealTimeTick">
+             <property name="text">
+              <string>创业板</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">buttonGroup_2</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="1" column="2" colspan="2">
+            <widget class="QCheckBox" name="chkBoxStockCodeForRealTimeTick">
+             <property name="text">
+              <string>股票代码</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">buttonGroup_2</string>
+             </attribute>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="labStockCodeForRealTimeTick">
+           <property name="text">
+            <string>股票代码：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QLineEdit" name="lineEditStockCodeForRealTimeTick"/>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="chkBoxBulkModeForRealTimeTick">
+             <property name="text">
+              <string>批量模式</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnBulkModeForRealTimeTick">
+             <property name="text">
+              <string>批量数据导入</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="labSavePathForRealTimeTick">
+           <property name="text">
+            <string>保存路径：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <layout class="QHBoxLayout" name="horizontalLayout_13">
+           <item>
+            <widget class="QLineEdit" name="lineEditSavePathForRealTimeTick"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnSavePathForRealTimeTick">
+             <property name="text">
+              <string>选择路径</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QWidget" name="widgetRealTimeTick" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabSameDayHistoricalTick">
+      <attribute name="title">
+       <string>当日历史分笔</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_7">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QLabel" name="labStockCodeForSameDayHistoricalTick">
+           <property name="text">
+            <string>股票代码：</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEditStockCodeForSameDayHistoricalTick"/>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="chkBoxBulkModeForSameDayHistoricalTick">
+           <property name="text">
+            <string>批量模式</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnBulkModeForSameDayHistoricalTick">
+           <property name="text">
+            <string>批量数据导入</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_12">
+         <item>
+          <widget class="QLabel" name="labSavePathForSameDayHistoricalTick">
+           <property name="text">
+            <string>保存路径：</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEditSavePathForSameDayHistoricalTick"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnSavePathForSameDayHistoricalTick">
+           <property name="text">
+            <string>选择路径</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QWidget" name="widgetSameDayHistoricalTick" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabMarketIndexList">
+      <attribute name="title">
+       <string>大盘指数行情列表</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_8">
+       <item row="1" column="0">
+        <widget class="QWidget" name="widgetMarketIndexList" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_16">
+         <item>
+          <widget class="QLabel" name="labSavePathForMarketIndexList">
+           <property name="text">
+            <string>保存路径：</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEditSavePathForMarketIndexList"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnSavePathForMarketIndexList">
+           <property name="text">
+            <string>选择路径</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabBigSingleTransactionData">
+      <attribute name="title">
+       <string>大单交易数据</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_8">
+       <item>
+        <layout class="QGridLayout" name="gridLayout_7">
+         <item row="0" column="0">
+          <widget class="QLabel" name="labStockCodeForBigSingleTransactionData">
+           <property name="text">
+            <string>股票代码：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <layout class="QHBoxLayout" name="horizontalLayout_8">
+           <item>
+            <widget class="QLineEdit" name="lineEditStockCodeForBigSingleTransactionData"/>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="chkBoxBulkModeForBigSingleTransactionData">
+             <property name="text">
+              <string>批量模式</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnBulkModeForBigSingleTransactionData">
+             <property name="text">
+              <string>批量数据导入</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="labTransactionTimeForBigSingleTransactionData">
+           <property name="text">
+            <string>交易日期：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="LineEdit" name="lineEditTransactionTimeForBigSingleTransactionData"/>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="labLots">
+           <property name="text">
+            <string>手数：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="LineEdit" name="lineEditLots">
+           <property name="text">
+            <string>400</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="labSavePathForBigSingleTransactionData">
+           <property name="text">
+            <string>保存路径：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <layout class="QHBoxLayout" name="horizontalLayout_11">
+           <item>
+            <widget class="QLineEdit" name="lineEditSavePathForBigSingleTransactionData"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnSavePathForBigSingleTransactionData">
+             <property name="text">
+              <string>选择路径</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QWidget" name="widgetBigSingleTransactionData" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="btnShowData">
+       <property name="text">
+        <string>抓取并显示数据</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnSaveToCSV">
+       <property name="text">
+        <string>保存为CSV</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnSaveToExcel">
+       <property name="text">
+        <string>保存为Excel</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnSaveToHDF5">
+       <property name="text">
+        <string>保存为HDF5</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnSaveToJSON">
+       <property name="text">
+        <string>保存为JSON</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnSaveToMySQL">
+       <property name="text">
+        <string>保存至MySQL</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnSaveToMongoDB">
+       <property name="text">
+        <string>保存至MongoDB</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>lineEdit.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
+</ui>

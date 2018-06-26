@@ -2,49 +2,35 @@
 
 # Form implementation generated from reading ui file 'newStrategyWidget_ui.ui'
 #
-# Created by: PyQt4 UI code generator 4.11.4
+# Created by: PyQt5 UI code generator 5.4.2
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt4 import QtCore, QtGui
-
-try:
-    _fromUtf8 = QtCore.QString.fromUtf8
-except AttributeError:
-    def _fromUtf8(s):
-        return s
-
-try:
-    _encoding = QtGui.QApplication.UnicodeUTF8
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig, _encoding)
-except AttributeError:
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig)
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_newStrategyWidget(object):
     def setupUi(self, newStrategyWidget):
-        newStrategyWidget.setObjectName(_fromUtf8("newStrategyWidget"))
+        newStrategyWidget.setObjectName("newStrategyWidget")
         newStrategyWidget.resize(711, 480)
-        self.verticalLayout = QtGui.QVBoxLayout(newStrategyWidget)
-        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.verticalLayout = QtWidgets.QVBoxLayout(newStrategyWidget)
+        self.verticalLayout.setObjectName("verticalLayout")
         self.textEdit = TextEdit(newStrategyWidget)
-        self.textEdit.setObjectName(_fromUtf8("textEdit"))
+        self.textEdit.setObjectName("textEdit")
         self.verticalLayout.addWidget(self.textEdit)
-        self.horizontalLayout = QtGui.QHBoxLayout()
-        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-        self.btnImportTemplate = QtGui.QPushButton(newStrategyWidget)
-        self.btnImportTemplate.setObjectName(_fromUtf8("btnImportTemplate"))
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.btnImportTemplate = QtWidgets.QPushButton(newStrategyWidget)
+        self.btnImportTemplate.setObjectName("btnImportTemplate")
         self.horizontalLayout.addWidget(self.btnImportTemplate)
-        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
-        self.btnSaveStrategy = QtGui.QPushButton(newStrategyWidget)
-        self.btnSaveStrategy.setObjectName(_fromUtf8("btnSaveStrategy"))
+        self.btnSaveStrategy = QtWidgets.QPushButton(newStrategyWidget)
+        self.btnSaveStrategy.setObjectName("btnSaveStrategy")
         self.horizontalLayout.addWidget(self.btnSaveStrategy)
-        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
-        self.btnRewriteStrategy = QtGui.QPushButton(newStrategyWidget)
-        self.btnRewriteStrategy.setObjectName(_fromUtf8("btnRewriteStrategy"))
+        self.btnRewriteStrategy = QtWidgets.QPushButton(newStrategyWidget)
+        self.btnRewriteStrategy.setObjectName("btnRewriteStrategy")
         self.horizontalLayout.addWidget(self.btnRewriteStrategy)
         self.verticalLayout.addLayout(self.horizontalLayout)
 
@@ -52,9 +38,10 @@ class Ui_newStrategyWidget(object):
         QtCore.QMetaObject.connectSlotsByName(newStrategyWidget)
 
     def retranslateUi(self, newStrategyWidget):
-        newStrategyWidget.setWindowTitle(_translate("newStrategyWidget", "新建策略", None))
-        self.btnImportTemplate.setText(_translate("newStrategyWidget", "导入模板", None))
-        self.btnSaveStrategy.setText(_translate("newStrategyWidget", "保存", None))
-        self.btnRewriteStrategy.setText(_translate("newStrategyWidget", "重写", None))
+        _translate = QtCore.QCoreApplication.translate
+        newStrategyWidget.setWindowTitle(_translate("newStrategyWidget", "新建策略"))
+        self.btnImportTemplate.setText(_translate("newStrategyWidget", "导入模板"))
+        self.btnSaveStrategy.setText(_translate("newStrategyWidget", "保存"))
+        self.btnRewriteStrategy.setText(_translate("newStrategyWidget", "重写"))
 
 from UiModule.common.commonTool.notepad import TextEdit

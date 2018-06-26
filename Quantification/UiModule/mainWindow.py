@@ -2,19 +2,19 @@
 
 import sys
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 
-from mainWindow_ui import Ui_mainWindow
+from UiModule.mainWindow_ui import Ui_mainWindow
 from UiModule.strategyCenterWidgetGroup.quickNewStrategyWidget.quickNewStrategyWidget import QuickNewStrategyWidget
 from UiModule.strategyCenterWidgetGroup.newStrategyWidget.newStrategyWidget import NewStrategyWidget
 from UiModule.strategyCenterWidgetGroup.strategyMgrWidget.strategyMgrWidget import StrategyMgrWidget
-from UiModule.dataCenterWidgetGroup.stockDataWidgetGroup.stockDataWidget.stockDataWidget import StockDataWidget
+from UiModule.dataCenterWidgetGroup.stockDataWidgetGroup.transactionDataWidget.transactionDataWidget import StockDataWidget
 from UiModule.dataCenterWidgetGroup.futuresDataWidget.futuresDataWidget import FutureDataWidget
 
 
-class MainWindow(QtGui.QMainWindow, Ui_mainWindow):
+class MainWindow(QtWidgets.QMainWindow, Ui_mainWindow):
     def __init__(self, parent=None):
-        QtGui.QWidget.__init__(self, parent)
+        QtWidgets.QWidget.__init__(self, parent)
         self.setupUi(self)
 
         self.__subWidgetList = []   # 统一管理所有的子窗口
@@ -53,8 +53,7 @@ class MainWindow(QtGui.QMainWindow, Ui_mainWindow):
         """将在所有的子窗口放入主界面中"""
 
         # 为所有的子窗口创建一个布局
-        _fromUtf8 = QtCore.QString.fromUtf8
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
 
@@ -62,7 +61,7 @@ class MainWindow(QtGui.QMainWindow, Ui_mainWindow):
         for widget in self.__subWidgetList:
             sizePolicy.setHeightForWidth(widget.sizePolicy().hasHeightForWidth())
             widget.setSizePolicy(sizePolicy)
-            widget.setObjectName(_fromUtf8("load_window"))
+            widget.setObjectName("load_window")
             self.gridLayout_for_widget.addWidget(widget, 0, 0, 0, 0)
 
     def allSubWidgetHide(self):
@@ -98,7 +97,7 @@ class MainWindow(QtGui.QMainWindow, Ui_mainWindow):
 
 # 测试代码
 if __name__ == '__main__':
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
 
     window = MainWindow()
     window.show()

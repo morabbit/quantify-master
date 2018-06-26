@@ -3,15 +3,14 @@
 import datetime
 import sys
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtWidgets
 from UiModule.common.commonWidget.calendarWidget.calendar import Calendar
-from futuresDataWidget_ui import Ui_futureDataWidget
-from data_basic import DataBasic
+from UiModule.dataCenterWidgetGroup.futuresDataWidget.futuresDataWidget_ui import Ui_futureDataWidget
 
 
-class FutureDataWidget(QtGui.QWidget, Ui_futureDataWidget):
+class FutureDataWidget(QtWidgets.QWidget, Ui_futureDataWidget):
     def __init__(self, parent=None):
-        QtGui.QWidget.__init__(self, parent)
+        QtWidgets.QWidget.__init__(self, parent)
         self.setupUi(self)
 
         # 用户需要查询那些数据（记录那些checkbox被选中）
@@ -34,6 +33,7 @@ class FutureDataWidget(QtGui.QWidget, Ui_futureDataWidget):
         self.chkBoxSZ50.clicked.connect(self.onChkBoxChicked)       # 大商所
 
         # 所有的按钮事件
+        self.btnSelectSavePath.clicked.connect(self.onBtnSelectSavePathClicked)
         self.btnSaveToCSV.clicked.connect(self.onBtnSaveClicked)
         self.btnSaveToExcel.clicked.connect(self.onBtnSaveClicked)
         self.btnSaveToHDF5.clicked.connect(self.onBtnSaveClicked)
@@ -46,25 +46,25 @@ class FutureDataWidget(QtGui.QWidget, Ui_futureDataWidget):
 
         # 判断参数是否正确
         if 0 == len(self.__marketDataSourceList):
-            QtGui.QMessageBox.warning(self, "错误！", r"请选择数据来源！", QtGui.QMessageBox.Cancel)
+            QtWidgets.QMessageBox.warning(self, u"错误！", u"请选择数据来源！", QtWidgets.QMessageBox.Cancel)
             return False
 
         # 需要有起始和终止时间
-        if self.lineEditStartTime.text().isEmpty() or self.lineEditEndTime.text().isEmpty():
-            QtGui.QMessageBox.warning(self, "错误！", "请填写完整日期！", QtGui.QMessageBox.Cancel)
+        if 0 == len(self.lineEditStartTime.text()) or 0 == len(self.lineEditEndTime.text()):
+            QtWidgets.QMessageBox.warning(self, u"错误！", u"请填写完整日期！", QtWidgets.QMessageBox.Cancel)
             return False
 
         # 起始和终止时间需要合法
-        startDate = datetime.datetime.strptime(unicode(self.lineEditStartTime.text().toUtf8(), 'utf-8', 'ignore'), '%Y-%m-%d')
-        endDate = datetime.datetime.strptime(unicode(self.lineEditEndTime.text().toUtf8(), 'utf-8', 'ignore'), '%Y-%m-%d')
+        startDate = datetime.datetime.strptime(self.lineEditStartTime.text(), '%Y-%m-%d')
+        endDate = datetime.datetime.strptime(self.lineEditEndTime.text(), '%Y-%m-%d')
         if startDate >= endDate:
-            QtGui.QMessageBox.warning(self, "错误！", "日期非法！", QtGui.QMessageBox.Cancel)
+            QtWidgets.QMessageBox.warning(self, u"错误！", u"日期非法！", QtWidgets.QMessageBox.Cancel)
             return False
 
         # 创建传参字典
         self.__refDict["market"] = self.__marketDataSourceList
-        self.__refDict["startTime"] = unicode(self.lineEditStartTime.text().toUtf8(), 'utf-8', 'ignore')
-        self.__refDict["endTime"] = unicode(self.lineEditEndTime.text().toUtf8(), 'utf-8', 'ignore')
+        self.__refDict["startTime"] = str(self.lineEditStartTime.text())
+        self.__refDict["endTime"] = str(self.lineEditEndTime.text())
         return True
 
     def appendDataSourceToList(self, chkBox, ref):
@@ -81,6 +81,20 @@ class FutureDataWidget(QtGui.QWidget, Ui_futureDataWidget):
             self.__marketDataSourceList.remove(ref)
 
     @QtCore.pyqtSlot()
+    def onBtnSelectSavePathClicked(self):
+        """获取用户想要保存的数据路径"""
+
+        # 打开对话框，获取需要保存的路径
+        path = QtWidgets.QFileDialog.getExistingDirectory(self, u"数据保存路径", QtCore.QDir.currentPath())
+
+        # 如果获取失败，退出函数
+        if path is None:
+            return
+
+        # 将路径显示到界面上
+        self.lineEditSavePath.setText(path)
+
+    @QtCore.pyqtSlot()
     def onBtnSaveClicked(self):
         """各个保存按钮按下的时候的槽函数"""
 
@@ -89,9 +103,12 @@ class FutureDataWidget(QtGui.QWidget, Ui_futureDataWidget):
             return
 
         # 获取用户想要保存的数据路径
-        path = unicode(QtGui.QFileDialog.getExistingDirectory(self, u"数据保存路径", QtCore.QDir.currentPath()).toUtf8(), 'utf-8', 'ignore')
-        self.__refDict["path"] = path
-        DataBasic.set_save_path(path)
+        if 0 == len(self.lineEditSavePath.text()) or 0 == len(self.lineEditSavePath.text()):
+            QtWidgets.QMessageBox.warning(self, u"错误！", u"请输入保存路径！", QtWidgets.QMessageBox.Cancel)
+            return
+        self.__refDict["path"] = str(self.lineEditSavePath.text())
+
+        print(self.__refDict)
 
         # 调取数据模块的接口
         if self.btnSaveToCSV == self.sender():
@@ -148,7 +165,7 @@ class FutureDataWidget(QtGui.QWidget, Ui_futureDataWidget):
 
 # 测试代码
 if __name__ == '__main__':
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
 
     window = FutureDataWidget()
     window.show()

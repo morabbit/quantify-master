@@ -2,13 +2,13 @@
 
 import sys
 
-from PyQt4 import QtCore, QtGui
-from newStrategyWidget_ui import Ui_newStrategyWidget
+from PyQt5 import QtCore, QtGui, QtWidgets
+from UiModule.strategyCenterWidgetGroup.newStrategyWidget.newStrategyWidget_ui import Ui_newStrategyWidget
 
 
-class NewStrategyWidget(QtGui.QWidget, Ui_newStrategyWidget):
+class NewStrategyWidget(QtWidgets.QWidget, Ui_newStrategyWidget):
     def __init__(self, parent=None):
-        QtGui.QWidget.__init__(self, parent)
+        QtWidgets.QWidget.__init__(self, parent)
         self.setupUi(self)
 
         # 设置字体
@@ -21,7 +21,7 @@ class NewStrategyWidget(QtGui.QWidget, Ui_newStrategyWidget):
         self.textEdit.document().modificationChanged.connect(self.updateUi)
 
         # 当剪切板的数据改变的时候，刷新界面
-        QtGui.QApplication.clipboard().dataChanged.connect(self.updateUi)
+        QtWidgets.QApplication.clipboard().dataChanged.connect(self.updateUi)
 
         # 按钮的信号与槽函数
         self.btnImportTemplate.clicked.connect(self.onBtnImportTemplateClicked)
@@ -51,10 +51,10 @@ class NewStrategyWidget(QtGui.QWidget, Ui_newStrategyWidget):
         """插入模板"""
 
         #  创建一个文件打开对话框，获取用户需要的文件的路径与文件名
-        filePathName = QtGui.QFileDialog.getOpenFileName(self, u'导入模板', './')
+        filePathName, fileType = QtWidgets.QFileDialog.getOpenFileName(self, u'导入模板', './')
 
         # 如果获取的文件名为空，或者用户点击了取消，直接退出本方法
-        if filePathName.isEmpty():
+        if 0 == len(filePathName):
             return
 
         # 依据获取的文件名，打开文件
@@ -69,7 +69,11 @@ class NewStrategyWidget(QtGui.QWidget, Ui_newStrategyWidget):
         """保存"""
 
         # 打开一个文件保存对话框，获取用户希望保存的文件的路径与文件名
-        filename = QtGui.QFileDialog.getSaveFileName(self, u"保存策略", '', "Python files (*.py *.pyw)")
+        filename, fileType = QtWidgets.QFileDialog.getSaveFileName(self, u"保存策略", '', "Python files (*.py *.pyw)")
+
+        # 如果用户点击取消，退出保存
+        if 0 == len(filename):
+            return
 
         # 防御式编程
         try:
@@ -94,7 +98,7 @@ class NewStrategyWidget(QtGui.QWidget, Ui_newStrategyWidget):
         except EnvironmentError as e:
 
             # 异常警告
-            QtGui.QMessageBox.warning(self, "Python Editor -- Save Error", "Failed to save {0}: {1}".format(filename, e))
+            QtWidgets.QMessageBox.warning(self, "Python Editor -- Save Error", "Failed to save {0}: {1}".format(filename, e))
             return False
 
     @QtCore.pyqtSlot()
@@ -106,7 +110,7 @@ class NewStrategyWidget(QtGui.QWidget, Ui_newStrategyWidget):
 
 # 测试代码
 if __name__ == '__main__':
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
 
     window = NewStrategyWidget()
     window.show()
